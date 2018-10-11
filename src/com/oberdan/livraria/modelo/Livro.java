@@ -1,11 +1,40 @@
 package com.oberdan.livraria.modelo;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name = "LIV_LIVROS")
 public class Livro {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Integer id;
 	private String titulo;
 	private String isbn;
 	private Double preco;
-	private String dataLancamento;
+	@Temporal(TemporalType.DATE)
+	private Calendar dataLancamento;
+	@ManyToMany
+	private List<Autor> autores = new ArrayList<Autor>();
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getTitulo() {
 		return titulo;
@@ -31,18 +60,24 @@ public class Livro {
 		this.preco = preco;
 	}
 
-	public String getDataLancamento() {
+	public Calendar getDataLancamento() {
 		return dataLancamento;
 	}
 
-	public void setDataLancamento(String dataLancamento) {
+	public void setDataLancamento(Calendar dataLancamento) {
 		this.dataLancamento = dataLancamento;
 	}
 
-	@Override
-	public String toString() {
-		return "Livro [titulo=" + titulo + ", isbn=" + isbn + ", preco=" + preco + ", dataLancamento=" + dataLancamento
-				+ "]";
+	public List<Autor> getAutores() {
+		return autores;
+	}
+
+	public void setAutores(List<Autor> autores) {
+		this.autores = autores;
+	}
+
+	public void adicionaAutor(Autor autor) {
+		this.autores.add(autor);		
 	}
 
 }
