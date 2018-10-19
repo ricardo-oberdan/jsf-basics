@@ -26,7 +26,8 @@ public class DAO<T> {
 		EntityManager em = JPAUtil.getEntityManager();
 
 		em.getTransaction().begin();
-		em.remove(t);
+		Object a = em.merge(t);
+		em.remove(a);
 		em.getTransaction().commit();
 
 		JPAUtil.closeEntityManager(em);

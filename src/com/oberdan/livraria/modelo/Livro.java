@@ -83,4 +83,8 @@ public class Livro {
 		this.autores.add(autor);
 	}
 
+	public void removeAutor(Autor autor) {
+		this.autores.remove(autor);		
+	}
+
 }

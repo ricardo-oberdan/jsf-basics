@@ -9,6 +9,8 @@
 
 	<ui:define name="conteudo">
 		<h:form id="form">
+			<h:messages id="messages"/>
+			
 			<fieldset>
 				<legend>Dados do Autor</legend>
 				<h:panelGrid columns="2">
@@ -20,7 +22,23 @@
 				</h:panelGrid>
 
 			</fieldset>
-		</h:form>		
+		</h:form>
+		
+		<h:form id="formTabela">
+			<h:dataTable id="tblAutores" value="#{autorBean.autores}" var="autor">
+				<h:column>
+					<h:outputText value="#{autor.nome}" />
+				</h:column>
+				<h:column>
+					<h:commandLink value="altera" action="#{autorBean.altera(autor)}" />
+				</h:column>
+				<h:column>
+					<h:commandLink value="remove" action="#{autorBean.remove(autor)}" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+				
 	</ui:define>
+	<ui:define name="texto">Cadastro de Autores</ui:define>
 </ui:composition>
 </html>
