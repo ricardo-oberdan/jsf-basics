@@ -13,8 +13,8 @@
 			<legend>Dados do Autor</legend>
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Nome" for="nome" />
-				<h:inputText id="nome" value="#{autorBean.autor.nome}" />
-
+				<h:inputText id="nome" value="#{autorBean.autor.nome}" required="true"/>
+				<h:message for="nome" />
 				<h:commandButton id="gravar" value="Salvar"
 					action="#{autorBean.salvar()}" />
 

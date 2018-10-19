@@ -24,9 +24,12 @@ public class Livro {
 	private String isbn;
 	private Double preco;
 	@Temporal(TemporalType.DATE)
-	private Calendar dataLancamento;
+	private Calendar dataLancamento = Calendar.getInstance();
 	@ManyToMany
 	private List<Autor> autores = new ArrayList<Autor>();
+
+	public Livro() {
+	}
 
 	public Integer getId() {
 		return id;
@@ -77,7 +80,7 @@ public class Livro {
 	}
 
 	public void adicionaAutor(Autor autor) {
-		this.autores.add(autor);		
+		this.autores.add(autor);
 	}
 
 }
