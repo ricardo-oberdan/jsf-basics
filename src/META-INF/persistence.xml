@@ -12,6 +12,7 @@
 		<!-- Aqui são listadas todas as entidades -->
 		<class>com.oberdan.livraria.modelo.Autor</class>
 		<class>com.oberdan.livraria.modelo.Livro</class>
+		<class>com.oberdan.livraria.modelo.Usuario</class>
 
 		<properties>
 			<!-- Propriedades JDBC -->

@@ -11,10 +11,16 @@
 <h:body>
 	<div id="cabecalho">
 		<h:graphicImage library="img" name="logo.png"/>
-		<h1><ui:insert name="titulo"></ui:insert></h1>	
+		<h1><ui:insert name="titulo"></ui:insert></h1>
+		<h:form id="formLogout" rendered="#{sessionScope['usuarioLogado'] != null}">
+			usuario logado: <h:outputText value="#{sessionScope['usuarioLogado'].email}" />
+			<br />
+			<h:commandLink value="Logout" action="#{loginBean.logout}"/>
+		</h:form>
 	</div>
 	
 	<div id="conteudo">
+		<h:messages id="messages" globalOnly="true"/>
 		<ui:insert name="conteudo"></ui:insert>
 	</div>
 

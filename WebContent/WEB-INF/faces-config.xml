@@ -7,6 +7,7 @@
 
 	<lifecycle>
 		<phase-listener>com.oberdan.livraria.util.LogPhaseListener</phase-listener>
+		<phase-listener>com.oberdan.livraria.util.Autorizador</phase-listener>
 	</lifecycle>
 
 </faces-config>
