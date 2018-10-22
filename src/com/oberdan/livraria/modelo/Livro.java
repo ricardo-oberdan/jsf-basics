@@ -27,6 +27,7 @@ public class Livro {
 	private Calendar dataLancamento = Calendar.getInstance();
 	@ManyToMany
 	private List<Autor> autores = new ArrayList<Autor>();
+	private String genero;
 
 	public Livro() {
 	}
@@ -85,6 +86,14 @@ public class Livro {
 
 	public void removeAutor(Autor autor) {
 		this.autores.remove(autor);		
+	}
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
 	}
 
 }

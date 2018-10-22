@@ -46,6 +46,7 @@ public class AutorBean implements Serializable {
 			return "livro?faces-redirect=true";
 		} else {
 			new DAO<Autor>(Autor.class).atualiza(this.autor);
+			this.autor = new Autor();
 			return "";
 		}		
 	}
