@@ -23,10 +23,13 @@ public class Livro {
 	private String titulo;
 	private String isbn;
 	private Double preco;
+	
 	@Temporal(TemporalType.DATE)
 	private Calendar dataLancamento = Calendar.getInstance();
+	
 	@ManyToMany
 	private List<Autor> autores = new ArrayList<Autor>();
+	
 	private String genero;
 
 	public Livro() {

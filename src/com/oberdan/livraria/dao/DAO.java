@@ -7,44 +7,27 @@ import javax.persistence.criteria.CriteriaQuery;
 
 public class DAO<T> {
 	private final Class<T> classe;
+	private EntityManager em;
 
-	public DAO(Class<T> classe) {
+	public DAO(EntityManager manager, Class<T> classe) {
 		this.classe = classe;
+		this.em = manager;
 	}
 
 	public void adiciona(T t) {
-		EntityManager em = JPAUtil.getEntityManager();
-
-		em.getTransaction().begin();
 		em.persist(t);
-		em.getTransaction().commit();
-
-		JPAUtil.closeEntityManager(em);
 	}
 
 	public void remove(T t) {
-		EntityManager em = JPAUtil.getEntityManager();
-
-		em.getTransaction().begin();
 		Object a = em.merge(t);
 		em.remove(a);
-		em.getTransaction().commit();
-
-		JPAUtil.closeEntityManager(em);
 	}
 
 	public void atualiza(T t) {
-		EntityManager em = JPAUtil.getEntityManager();
-
-		em.getTransaction().begin();
 		em.merge(t);
-		em.getTransaction().commit();
-
-		JPAUtil.closeEntityManager(em);
 	}
 
 	public List<T> listaTodos() {
-		EntityManager em = JPAUtil.getEntityManager();
 		CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(classe);
 		query.select(query.from(classe));
 		List<T> lista = em.createQuery(query).getResultList();
@@ -52,7 +35,6 @@ public class DAO<T> {
 	}
 
 	public T obterPorId(Integer id) {
-		EntityManager em = JPAUtil.getEntityManager();
 		T objeto = em.find(classe, id);
 		return objeto;
 	}

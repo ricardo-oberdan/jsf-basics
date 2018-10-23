@@ -13,7 +13,7 @@ import com.oberdan.livraria.modelo.Livro;
 public class PopulaBanco {
 
 	public static void main(String[] args) {
-		EntityManager em = JPAUtil.getEntityManager();
+		EntityManager em = new JPAUtil().getEntityManager();
 
 		em.getTransaction().begin();
 
